@@ -10,17 +10,30 @@ function App() {
                             .fill(0)
                             .map(()=>({
                                 value : Math.ceil(Math.random()*6),
-                                isHeld :  true,
+                                isHeld :  false,
                                 id : nanoid()
                             }))
   }
 
   function rollDice(){
-      setDice(generateDice())
+
+      setDice(oldDice=>oldDice.map((prev)=>
+          prev.isHeld ? prev : {...prev,value : Math.ceil(Math.random()*6)}
+      ))
+  }
+
+  function hold(id){
+      setDice(dice.map((item)=>(
+          item.id===id ? {...item,isHeld: !item.isHeld} : item
+      )))
   }
 
   const diceButtons = dice.map(button=>(
-      <Dice key={button.id} value={button.value} isHeld={button.isHeld} id={button.id}  />
+      <Dice key={button.id}
+            value={button.value}
+            isHeld={button.isHeld}
+            id={button.id}
+            hold={()=>hold(button.id)}    />
   ))
   return(
       <main className="app">
