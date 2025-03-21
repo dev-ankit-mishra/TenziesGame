@@ -1,7 +1,7 @@
-export default function Dice(){
+export default function Dice(props){
    return (
        <button className="diceButton">
-            1
+           {props.value}
        </button>
    )
 }
