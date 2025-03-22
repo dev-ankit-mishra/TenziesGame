@@ -14,7 +14,7 @@ body {
 }
 
 .app{
-  height: 600px;
+  height: 500px;
   width: 450px;
   background-color: white;
   border-radius: 10px;
@@ -45,7 +45,8 @@ body {
 }
 
 .rollButton {
-  width: 100px;
+  min-width: 100px;
+  width: fit-content;
   height: 50px;
   padding: 10px;
   border-radius: 10px;
@@ -56,4 +57,21 @@ body {
   margin-top: 10px;
   font-family: Inter, Arial, Helvetica, sans-serif;
   cursor: pointer;
+}
+
+.heading{
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  margin: 10px;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.para{
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  margin: 20px 10px;
+
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 10px;
 }

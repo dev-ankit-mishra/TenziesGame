@@ -5,6 +5,8 @@ function App() {
 
   const [dice, setDice] = useState(()=>generateDice())
 
+  const gameWon = dice.every((die)=>die.isHeld)
+                        && dice.every((die)=>die.value===dice[0].value)
   function generateDice() {
       return new Array(10)
                             .fill(0)
@@ -16,10 +18,15 @@ function App() {
   }
 
   function rollDice(){
+        if(!gameWon){
+            setDice(oldDice=>oldDice.map((prev)=>
+                prev.isHeld ? prev : {...prev,value : Math.ceil(Math.random()*6)}
+            ))
+        }
+        else{
+            setDice(generateDice())
+        }
 
-      setDice(oldDice=>oldDice.map((prev)=>
-          prev.isHeld ? prev : {...prev,value : Math.ceil(Math.random()*6)}
-      ))
   }
 
   function hold(id){
@@ -37,10 +44,12 @@ function App() {
   ))
   return(
       <main className="app">
+          <h1 className="heading">Tenzies</h1>
+          <p className="para">Roll until dice are the same.Click each dice to freeze it at its current value between rolls.</p>
           <div className="container">
               {diceButtons}
           </div>
-          <button onClick={rollDice} className="rollButton">Roll</button>
+          <button onClick={rollDice} className="rollButton">{gameWon ?"New Game" :"Roll"}</button>
       </main>
   )
 }
