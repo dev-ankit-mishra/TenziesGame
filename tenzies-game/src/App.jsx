@@ -60,8 +60,8 @@ function App() {
             <div className="container">
                 {diceButtons}
             </div>
-            <button ref={buttonRef} onClick={rollDice} className="rollButton">{gameWon ? "New Game" : "Roll"}</button>
-        {gameWon && <p className="count-para">You took {count} attempts. </p>}
+            <button style={gameWon ? {backgroundColor : "#00563B"} : {backgroundColor : "#0039a6"}} ref={buttonRef} onClick={rollDice} className="rollButton">{gameWon ? "New Game" : "Roll"}</button>
+        {gameWon && <p className="count-para">You rolled {count} times. </p>}
         </main>)
 }
 
