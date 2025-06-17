@@ -16,7 +16,7 @@ body {
 .app{
   height: 500px;
   width: 450px;
-  background-color: white;
+  background-color: 		#f5f0ff;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
